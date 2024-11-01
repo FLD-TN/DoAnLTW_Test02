@@ -1,0 +1,89 @@
+﻿.pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    justify-content: center;
+}
+
+
+.page-item a, .page-item span {
+    display: inline-block;
+    padding: 8px 12px;
+    color: #007bff;
+    text-decoration: none;
+    border: 1px solid #dee2e6;
+}
+
+.page-item.active a {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.page-item a:hover {
+    background-color: black;
+    color: white;
+    border-color: #007bff;
+}
+
+.toast-top-right {
+    top: 9% !important;
+    right: 7% !important
+}
+
+.toast-success {
+    background-color: #00CC00;
+    color: white;
+}
+
+.search-section {
+    border: 3px solid #ff6a00;
+    height: 70px;
+    text-align: center;
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.card-pro {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+    .card-pro:hover {
+        transform: scale(1.02);
+    }
+
+    .card-pro img {
+        border-radius: 5px;
+    }
+
+.btn {
+    margin: 5px;
+    padding: 8px 12px;
+    font-size: 14px;
+}
+
+.btn-info, .btn-danger {
+    transition: background-color 0.3s;
+}
+
+    .btn-info:hover {
+        background-color: #0056b3;
+        color: white;
+    }
+
+    .btn-danger:hover {
+        background-color: #d9534f;
+        color: white;
+    }
+
+
+

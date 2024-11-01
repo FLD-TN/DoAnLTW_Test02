@@ -1,0 +1,98 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<MVC_Test03.Models.Product>
+
+@{
+    ViewBag.Title = "ProductList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" type="text/css" href="~/Content/css/ProductList.css" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script type="text/javascript">
+    toastr.options.positionClass = 'toast-top-right'
+    toastr.options.timeOut = 2000;
+    @if (TempData["message"] != null)
+    {
+        <text>
+
+            toastr.success('@TempData["message"]');
+        </text>
+    }
+</script>
+
+
+
+<div class=" container ">
+    <h2 class="text-center">Mua Hàng</h2>
+
+    <div class="search-section">
+        @using (Html.BeginForm("ProductList", "Products", FormMethod.Get))
+        {
+            <span>
+                Tên Sản phẩm: <input type="text" name="SearchString" class="form-control" style="display: inline-block; width: auto;" />
+                <input type="submit" value="Tìm kiếm" class="btn btn-warning" />
+            </span>
+            @*<span>
+                Đơn giá từ: <input type="number" name="min" class="form-control" style="display: inline-block; width: auto;" />
+                đến: <input type="number" name="max" class="form-control" style="display: inline-block; width: auto;" />
+                <input type="submit" value="Tìm giá" class="btn btn-warning" />
+            </span>*@
+            @*<span>
+                Chọn danh mục:
+                <input type="text" name="idCate" class="form-control" style=" display:inline-block;width:auto" />
+                <input type="submit" value="Lọc sản phẩm" class="btn btn-warning" style="z-index:10000 ; position:absolute" />
+            </span>*@
+        @*}
+        @using (Html.BeginForm("FilterByIDCate", "Products", FormMethod.Get))
+        {
+            <span>
+                Chọn danh mục:
+                <input type="text" name="idCate" class="form-control" style=" display:inline-block;width:auto" />
+                <input type="submit" value="Lọc sản phẩm" class="btn btn-warning" style="z-index:10000 ; position:absolute" />
+            </span>
+        }*@
+        }
+    </div>
+
+
+        <div class="row my-3">
+        @foreach (var pro in Model)
+        {
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card card-pro">
+                    <img src="~/Content/images/@pro.ImagePro" width="200" height="250" alt="Product Image" class="card-img-top" />
+                    <p>@Html.DisplayFor(model => pro.NamePro)</p>
+                    <p>Đơn giá: <span style="color: red;">@Html.DisplayFor(model => pro.Price)</span></p>
+                    <div>
+                        <a class="btn btn-info" href="/Products/Details/@pro.ProductID">Chi tiết</a>
+                        <a href="/ShoppingCart/AddToCart/@pro.ProductID" class="btn btn-success">Mua</a>
+                        <button style="border:none;background-color:white">
+                            <a href="/ShoppingCart/AddToCart/@pro.ProductID">
+                                <img src="~/Content/images/trolley-cart.png" alt="Add to cart" title="Add to cart" width="30px" />
+                            </a>
+
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    @* Số trang *@
+    <div class="text-center">
+        <p>Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</p>
+        @Html.PagedListPager(Model, page => Url.Action("ProductList", new { page }), new PagedListRenderOptions
+        {
+            UlElementClasses = new[] { "pagination" },
+            LiElementClasses = new[] { "page-item" },
+            DisplayLinkToPreviousPage = PagedListDisplayMode.IfNeeded,
+            DisplayLinkToNextPage = PagedListDisplayMode.IfNeeded,
+            DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+            DisplayLinkToLastPage = PagedListDisplayMode.Always,
+            LinkToIndividualPageFormat = " {0}",
+            LinkToPreviousPageFormat = "Trước",
+            LinkToNextPageFormat = "Tiếp"
+        })
+    </div>
+</div>

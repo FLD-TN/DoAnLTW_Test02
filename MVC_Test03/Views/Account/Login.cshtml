@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Title</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/Content/css/signin.css/signin.css" />
+</head>
+<body>
+    <div class="container" style="overflow:hidden">
+        <!-- Cột bên trái: Hình ảnh ghế -->
+        <div class="left-page-container">
+            <p class="text-left-page"></p>
+            <img class="sofa-img-login" src="~/Content/images/sofaLogin.png"
+                 alt="sofa">
+        </div>
+
+        <!-- Cột bên phải: Form đăng ký -->
+        <div class="sign-up">
+            <div class="header">
+                <h1>Sign In</h1>
+                <p>
+                    Don't have an account yet? <a href="Signup.html">
+                        Sign
+                        up
+                    </a>
+                </p>
+            </div>
+
+            <div class="content">
+                <form action="@Url.Action("Login", "Account")" method="post">
+                    <input type="text" name="NameUser"
+                           placeholder="Username" required><br>
+
+                    <div class="password">
+                        <input type="password" name="PasswordUser" placeholder="Password"
+                               class="password" required>
+                        <i class="fa fa-eye"></i>
+                    </div>
+                    <br>
+                    <input type="checkbox"> Remember me
+
+
+                    <button type="submit" class="btn-signin">Log In</button>
+                    <div class="forgot-password">
+                        <a href="#">
+                            Forgot
+                            password?
+                        </a>
+                    </div>
+                    @if (ViewBag.ErrorMessage != null)
+                    {
+                        <div class="error-message">@ViewBag.ErrorMessage</div>
+                    }
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+</html>
+

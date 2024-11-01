@@ -1,0 +1,48 @@
+﻿@model IEnumerable<MVC_Test03.Models.Category>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>LOẠI SẢN PHẨM</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-bordered" style="border:5px solid gray ; ">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IDCate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NameCate)
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDCate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameCate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", "Categories", new { id = item.IDCate.Trim() }, null) |
+                @Html.ActionLink("Details", "Details", "Categories", new { id = item.IDCate.Trim() }, null) |
+                @Html.ActionLink("Delete", "Delete", "Categories", new { id = item.IDCate.Trim() }, null)
+            </td>
+        </tr>
+    }
+
+</table>
