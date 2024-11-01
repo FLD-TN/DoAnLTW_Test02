@@ -167,6 +167,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBSportStore.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\HomeIndexViewModel.cs" />
     <Compile Include="Models\OrderDetail.cs">
       <DependentUpon>DBSportStore.tt</DependentUpon>
     </Compile>
@@ -195,6 +196,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\css\Layout.css" />
     <Content Include="Content\css\ProductList.css" />
     <Content Include="Content\css\signin.css\signin.css" />
     <Content Include="Content\images\aq1.png" />

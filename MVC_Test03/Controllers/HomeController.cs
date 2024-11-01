@@ -12,25 +12,40 @@ namespace MVC_Test03.Controllers
     public class HomeController : Controller
     {
         private DBSportStoreEntities db = new DBSportStoreEntities();
-        public ActionResult Index(int? page)
+        public ActionResult Index()
         {
-        
-            // Khai báo mỗi trang có 8 sản phẩm
-            int pageSize = 8;
-            int pageNumber = (page ?? 1);
-            var selectedAQTDNames = new List<string>
-    {
-        "Bộ Bàn Ghế Phòng Ăn",
-        "Bàn Ăn Dá Cẩm Thạch",
-       "Bàn Ăn Nhập Khẩu ARETI-102"
-    };
-             var products = db.Products
-             .Where(p => selectedAQTDNames.Contains(p.NamePro))
-                     .OrderBy(x => Guid.NewGuid()) // Chọn ngẫu nhiên
-                     .ToPagedList(pageNumber, pageSize); // Phân trang
 
+          
 
-            return View(products);
+            var diningRoomProducts = db.Products
+                 .Where(p => p.Category == "NTPA")
+                 .OrderBy(x => Guid.NewGuid())
+                 .Take(3)
+                 .ToList();
+
+            // Lấy 3 sản phẩm ngẫu nhiên cho Nội thất phòng khách
+            var livingRoomProducts = db.Products
+                .Where(p => p.Category == "NTPK")
+                .OrderBy(x => Guid.NewGuid())
+                .Take(3)
+                .ToList();
+
+            // Lấy 3 sản phẩm ngẫu nhiên cho Nội thất phòng ngủ
+            var bedroomProducts = db.Products
+                .Where(p => p.Category == "NTPN")
+                .OrderBy(x => Guid.NewGuid())
+                .Take(3)
+                .ToList();
+
+            // Tạo một ViewModel để nhóm các sản phẩm
+            var viewModel = new HomeIndexViewModel
+            {
+                DiningRoomProducts = diningRoomProducts,
+                LivingRoomProducts = livingRoomProducts,
+                BedroomProducts = bedroomProducts
+            };
+
+            return View(viewModel);
         }
 
         public ActionResult About()

@@ -1,0 +1,38 @@
+﻿
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.body-content {
+    flex: 1;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.contact-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9;
+    border-radius: 50px;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    width: fit-content;
+    margin: 0 auto;
+    color: black;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    color: #000;
+    text-decoration: none;
+    margin: 0 20px;
+}
+
+

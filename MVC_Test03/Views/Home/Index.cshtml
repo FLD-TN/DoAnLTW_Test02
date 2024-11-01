@@ -1,5 +1,5 @@
-﻿@using PagedList.Mvc;
-@model PagedList.IPagedList<MVC_Test03.Models.Product>
+﻿@model MVC_Test03.Models.HomeIndexViewModel
+
 
 @{
     ViewBag.Title = "Index";
@@ -59,14 +59,14 @@
         <h1 class="text-center bg-opacity-100">Sản Phẩm tiêu biểu</h1>
         <h3>Nội thất phòng ăn</h3>
         <div class="row">
-            @foreach (var product in Model)
+            @foreach (var product in Model.DiningRoomProducts)
             {
                 <div class="col-md-4 mb-4">
                     <div class="card">
                         <img src="~/Content/images/@product.ImagePro" alt="@product.NamePro" height="300px" class="card-img-top" />
-                        <div class="card-body" >
+                        <div class="card-body">
                             <h5 class="card-title">@product.NamePro</h5>
-                            <p class="card-text">@product.Category</p>
+                            <p class="card-text">@product.Price</p>
                             <a class="btn btn-info" href="/Products/Details/@product.ProductID">Chi tiết</a>
                             <a href="/ShoppingCart/AddToCart/@product.ProductID" class="btn btn-success">Mua</a>
                             <span>
@@ -79,14 +79,14 @@
         </div>
         <h3>Nội thất phòng khách</h3>
         <div class="row">
-            @foreach (var product in Model)
+            @foreach (var product in Model.LivingRoomProducts)
             {
                 <div class="col-md-4 mb-4">
                     <div class="card">
-                        <img src="~/Content/images/@product.ImagePro" alt="@product.NamePro" class="card-img-top" />
+                        <img src="~/Content/images/@product.ImagePro" alt="@product.NamePro" height="300px" class="card-img-top" />
                         <div class="card-body">
                             <h5 class="card-title">@product.NamePro</h5>
-                            <p class="card-text">@product.Category</p>
+                            <p class="card-text">@product.Price</p>
                             <a class="btn btn-info" href="/Products/Details/@product.ProductID">Chi tiết</a>
                             <a href="/ShoppingCart/AddToCart/@product.ProductID" class="btn btn-success">Mua</a>
                             <span>
@@ -97,44 +97,47 @@
                 </div>
             }
         </div>
-        @*<h1 class="text-center">Cửa Hàng Nội Thất</h1>
+
+        <h3>Nội thất phòng ngủ</h3>
         <div class="row">
-            @foreach (var product in Model)
+            @foreach (var product in Model.BedroomProducts)
             {
                 <div class="col-md-4 mb-4">
                     <div class="card">
-                        <img src="~/Content/images/@product.ImagePro" alt="Product Image" class="card-img-top" />
+                        <img src="~/Content/images/@product.ImagePro" alt="@product.NamePro" height="300px" class="card-img-top" />
                         <div class="card-body">
                             <h5 class="card-title">@product.NamePro</h5>
-                            <p class="card-text">@product.Category</p>
-                            <a href="#" class="btn btn-success">Mua Ngay</a>
+                            <p class="card-text">@product.Price</p>
+                            <a class="btn btn-info" href="/Products/Details/@product.ProductID">Chi tiết</a>
+                            <a href="/ShoppingCart/AddToCart/@product.ProductID" class="btn btn-success">Mua</a>
+                            <span>
+                                <a href="@Url.Action("FilterByIDCate", "Products", new { idCate = @product.Category.Trim() })" class="btn btn-primary">More</a>
+                            </span>
                         </div>
                     </div>
                 </div>
             }
-        </div>*@
-        @* Số trang *@
-        <div class="text-center">
-            <p>Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</p>
-            @Html.PagedListPager(Model, page => Url.Action("ProductList", new { page }), new PagedListRenderOptions
-            {
-                UlElementClasses = new[] { "pagination" },
-                LiElementClasses = new[] { "page-item" },
-                DisplayLinkToPreviousPage = PagedListDisplayMode.IfNeeded,
-                DisplayLinkToNextPage = PagedListDisplayMode.IfNeeded,
-                DisplayLinkToFirstPage = PagedListDisplayMode.Always,
-                DisplayLinkToLastPage = PagedListDisplayMode.Always,
-                LinkToIndividualPageFormat = " {0}",
-                LinkToPreviousPageFormat = "Trước",
-                LinkToNextPageFormat = "Tiếp"
-            })
         </div>
+
+        @*<h1 class="text-center">Cửa Hàng Nội Thất</h1>
+            <div class="row">
+                @foreach (var product in Model)
+                {
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="~/Content/images/@product.ImagePro" alt="Product Image" class="card-img-top" />
+                            <div class="card-body">
+                                <h5 class="card-title">@product.NamePro</h5>
+                                <p class="card-text">@product.Category</p>
+                                <a href="#" class="btn btn-success">Mua Ngay</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>*@
+
     </main>
-    <footer class="footer">
-        <div class="container">
-            <p class="text-center">Copyright &copy; 2023 Cửa Hàng Nội Thất</p>
-        </div>
-    </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
