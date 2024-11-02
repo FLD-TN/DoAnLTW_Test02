@@ -66,7 +66,7 @@
                         <img src="~/Content/images/@product.ImagePro" alt="@product.NamePro" height="300px" class="card-img-top" />
                         <div class="card-body">
                             <h5 class="card-title">@product.NamePro</h5>
-                            <p class="card-text">@product.Price</p>
+                            <p><span style="color:red">@product.Price.Value.ToString("#,##0") ₫</span></p>
                             <a class="btn btn-info" href="/Products/Details/@product.ProductID">Chi tiết</a>
                             <a href="/ShoppingCart/AddToCart/@product.ProductID" class="btn btn-success">Mua</a>
                             <span>
@@ -86,7 +86,7 @@
                         <img src="~/Content/images/@product.ImagePro" alt="@product.NamePro" height="300px" class="card-img-top" />
                         <div class="card-body">
                             <h5 class="card-title">@product.NamePro</h5>
-                            <p class="card-text">@product.Price</p>
+                            <p><span style="color:red">@product.Price.Value.ToString("#,##0") ₫</span></p>
                             <a class="btn btn-info" href="/Products/Details/@product.ProductID">Chi tiết</a>
                             <a href="/ShoppingCart/AddToCart/@product.ProductID" class="btn btn-success">Mua</a>
                             <span>
@@ -107,7 +107,7 @@
                         <img src="~/Content/images/@product.ImagePro" alt="@product.NamePro" height="300px" class="card-img-top" />
                         <div class="card-body">
                             <h5 class="card-title">@product.NamePro</h5>
-                            <p class="card-text">@product.Price</p>
+                            <p><span style="color:red">@product.Price.Value.ToString("#,##0") ₫</span></p>
                             <a class="btn btn-info" href="/Products/Details/@product.ProductID">Chi tiết</a>
                             <a href="/ShoppingCart/AddToCart/@product.ProductID" class="btn btn-success">Mua</a>
                             <span>
