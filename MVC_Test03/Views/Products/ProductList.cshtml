@@ -62,7 +62,9 @@
                 <div class="card card-pro">
                     <img src="~/Content/images/@pro.ImagePro" width="200" height="250" alt="Product Image" class="card-img-top" />
                     <p>@Html.DisplayFor(model => pro.NamePro)</p>
-                    <p>Đơn giá: <span style="color: red;">@Html.DisplayFor(model => pro.Price)</span></p>
+                    <p class="card-text">@pro.Price.Value.ToString("#,##0") ₫</p>
+                    @*<p>Đơn giá: <span style="color: red;">@Html.DisplayFor(model => pro.Price.Value.ToString("#,##0").Replace(',', '.'))</span>đ</p>*@
+
                     <div>
                         <a class="btn btn-info" href="/Products/Details/@pro.ProductID">Chi tiết</a>
                         <a href="/ShoppingCart/AddToCart/@pro.ProductID" class="btn btn-success">Mua</a>

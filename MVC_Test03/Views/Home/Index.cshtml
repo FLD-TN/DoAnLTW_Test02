@@ -29,6 +29,7 @@
             background-color: #ffffff;
             border: none;
             transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow:0px 15px 20px rgba(0,0,0,0.2);
         }
 
             .card:hover {
@@ -49,6 +50,7 @@
             .btn-success:hover {
                 background-color: #218838;
             }
+     
     </style>
 </head>
 <body>
@@ -66,7 +68,7 @@
                         <img src="~/Content/images/@product.ImagePro" alt="@product.NamePro" height="300px" class="card-img-top" />
                         <div class="card-body">
                             <h5 class="card-title">@product.NamePro</h5>
-                            <p class="card-text">@product.Price</p>
+                            <p class="card-text">@product.Price.Value.ToString("#,##0") ₫</p>
                             <a class="btn btn-info" href="/Products/Details/@product.ProductID">Chi tiết</a>
                             <a href="/ShoppingCart/AddToCart/@product.ProductID" class="btn btn-success">Mua</a>
                             <span>
@@ -86,7 +88,7 @@
                         <img src="~/Content/images/@product.ImagePro" alt="@product.NamePro" height="300px" class="card-img-top" />
                         <div class="card-body">
                             <h5 class="card-title">@product.NamePro</h5>
-                            <p class="card-text">@product.Price</p>
+                            <p class="card-text">@product.Price.Value.ToString("#,##0") ₫</p>
                             <a class="btn btn-info" href="/Products/Details/@product.ProductID">Chi tiết</a>
                             <a href="/ShoppingCart/AddToCart/@product.ProductID" class="btn btn-success">Mua</a>
                             <span>
@@ -107,7 +109,7 @@
                         <img src="~/Content/images/@product.ImagePro" alt="@product.NamePro" height="300px" class="card-img-top" />
                         <div class="card-body">
                             <h5 class="card-title">@product.NamePro</h5>
-                            <p class="card-text">@product.Price</p>
+                            <p class="card-text">@product.Price.Value.ToString("#,##0") ₫</p>
                             <a class="btn btn-info" href="/Products/Details/@product.ProductID">Chi tiết</a>
                             <a href="/ShoppingCart/AddToCart/@product.ProductID" class="btn btn-success">Mua</a>
                             <span>
